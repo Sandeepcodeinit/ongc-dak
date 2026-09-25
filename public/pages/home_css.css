@@ -1,0 +1,207 @@
+body, h1, p {
+  font-family: "Quicksand", sans-serif !important;
+  font-optical-sizing: auto;
+}
+
+section.banner-section {
+  width: 100% !important;
+  float: left;
+  position: relative;
+  z-index: -1;
+}
+section.main-header {
+  width: 100%;
+  float: left;
+  background: #fff;
+  box-shadow: 0px 2px 13px -8px #000;
+}
+section.main-header ul.navbar-nav.ms-auto.mb-2.mb-lg-0 {
+  width: 100% !important;
+  float: right !important;
+  text-align: right;
+  display: block !important;
+}
+section.main-header li.nav-item {
+  float: right !important;
+  width: auto;
+  text-align: right !important;
+}
+section.main-header img {
+  width: 60px;
+}
+section.main-header nav.navbar {
+  padding: 10px 0px;
+}
+section.main-header li.nav-item a {
+  color: #fff !important;
+  font-size: 14px;
+  background: #a62e34;
+  margin-left: 16px;
+  padding: 10px 30px !important;
+}
+section.banner-section .item {
+  position: relative;
+}
+.text-banner {
+  width: 50%;
+  position: absolute;
+  top: 28%;
+  left: 130px;
+}
+.text-banner p {
+  font-size: 16px;
+  line-height: 30px;
+  width: 100%;
+  float: left;
+}
+.text-banner h1 {
+  font-weight: 700;
+  font-size: 48px;
+  float: left;
+  width: 100%;
+}
+.text-banner a {
+  color: #fff !important;
+  font-size: 14px;
+  background: #a62e34;
+  padding: 10px 30px !important;
+  margin-top: 8px;
+  float: left;
+  text-decoration: none !important;
+}
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+  background: #a62f34 !important;
+}
+.owl-dots {
+  position: relative;
+  bottom: 40px;
+}
+.about-heading-1, .about-heading-1 img {
+  width: 100%;
+  float: right;
+}
+section.about-company {
+  width: 100%;
+  float: left;
+  margin: 50px 0px;
+}
+.about-heading h2:after {
+  position: absolute;
+  content: "";
+  background: #a62f34;
+  width: 120px;
+  height: 3px;
+  bottom: -27px;
+  left: 0px;
+}
+.about-heading h2 {
+  width: 100%;
+  float: left;
+  margin-bottom: 60px;
+  position: relative;
+}
+.about-heading {
+  width: 100%;
+  float: left;
+  margin-top: 120px;
+}
+.about-heading h2 {
+  width: 100%;
+  float: left;
+  margin-bottom: 60px;
+  position: relative;
+  font-size: 30px;
+  font-weight: bold;
+}
+.about-heading p {
+  width: 100%;
+  float: left;
+  font-size: 16px;
+  line-height: 30px;
+}
+section.main-footer {
+  width: 100%;
+  float: left;
+  background: #a62e34;
+  padding: 40px 0px 0px;
+  text-align: center;
+}
+section.main-footer p {
+  color: #fff;
+  width: 100%;
+  float: left;
+  margin-top: 10px;
+}
+section.main-footer ul li {
+  display: inline-block;
+  padding: 10px;
+  color: #fff;
+}
+section.main-footer ul {
+  list-style: none;
+  padding-left: 0px;
+}
+.bottom-class p {
+  font-size: 11px;
+  margin-top: 0px !important;
+}
+section.main-footer i {
+  color: #fff;
+  font-size: 20px;
+}
+
+
+@media only screen and (max-width: 767px) {
+
+ul.navbar-nav {
+    margin-top: 20px;
+}
+.text-banner {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 20px;
+}
+.text-banner h1 {
+  font-size: 20px;
+}
+.text-banner p {
+  font-size: 12px;
+  line-height: 18px;
+  width: 80%;
+  float: left;
+}
+.text-banner a {
+  margin-top: -11px;
+}
+.about-heading {
+  width: 100%;
+  float: left;
+  margin-top: 0px;
+}
+section.about-company {
+  width: 100%;
+  float: left;
+  margin: 20px 0px;
+}
+}
+
+
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px)  {
+
+    .text-banner {
+      width: 80% !important;
+      position: absolute;
+      top: 7%;
+      left: 40px;
+  }
+.about-heading {
+    width: 100%;
+    float: left;
+    margin-top: 0px;
+}
+}

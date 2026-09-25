@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'user_check' => [
+    'url' => env('USER_CHECK_API_URL', 'https://test.ongccsr.co.in/api/user_check'),
+    'token' => env('USER_CHECK_API_TOKEN'),
+],
 ];

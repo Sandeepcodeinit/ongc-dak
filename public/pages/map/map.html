@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>India Map</title>
+    <!-- Include amCharts library -->
+    <script src="index.js"></script>
+    <script src="map.js"></script>
+    <script src="indiaLow.js"></script>
+    <script src="Animated.js"></script>
+    <style>
+        /* Add your custom CSS styles here if needed */
+        #chartdiv {
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Div to hold the map -->
+    <div id="chartdiv"></div>
+
+    <!-- JavaScript code to initialize and customize the map -->
+    <script>
+        // Create a new am5 Root
+        var root = am5.Root.new("chartdiv");
+
+        // Set themes
+        root.setThemes([
+            am5themes_Animated.new(root)
+        ]);
+
+        // Create the map chart
+        var chart = root.container.children.push(am5map.MapChart.new(root, {
+            panX: "translateX",
+            panY: "translateY",
+            projection: am5map.geoMercator(),
+			layout: root.horizontalLayout
+        }));
+
+        // Create main polygon series for India
+        var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
+            geoJSON: am5geodata_indiaLow,
+			  calculateAggregates: true,
+			  valueField: "value"
+        }));
+
+        // Add tooltips to state polygons
+        polygonSeries.mapPolygons.template.setAll({
+            tooltipHTML: "<b>{name}</b><br>Population: {population}<br>Area: {area}",
+			interactive: true,
+			toggleKey: "active",
+        });
+		
+		polygonSeries.mapPolygons.template.states.create("hover", {
+		  fill: root.interfaceColors.get("primaryButtonHover")
+		});
+
+		polygonSeries.mapPolygons.template.states.create("active", {
+		  fill: root.interfaceColors.get("primaryButtonHover")
+		});
+		polygonSeries.set("heatRules", [{
+		  target: polygonSeries.mapPolygons.template,
+		  dataField: "value",
+		  min: am5.color(0x8ab7ff),
+		  max: am5.color(0x25529a),
+		  key: "fill"
+		}]);
+		
+		
+
+        // Add states data with population and area
+        var states = [
+            { "value":1, "id": "IN-AN", "name": "Andaman and Nicobar Islands", "population": "379,944", "area": "8,249 km²" },
+            { "value":3, "id": "IN-AP", "name": "Andhra Pradesh", "population": "49,506,799", "area": "162,970 km²" },
+            { "value":4, "id": "IN-AR", "name": "Arunachal Pradesh", "population": "1,383,727", "area": "83,743 km²" },
+            { "value":2, "id": "IN-AS", "name": "Assam", "population": "31,205,576", "area": "78,438 km²" },
+            { "value":1, "id": "IN-BR", "name": "Bihar", "population": "104,099,452", "area": "94,163 km²" },
+            { "value":5, "id": "IN-CH", "name": "Chandigarh", "population": "1,055,450", "area": "114 km²" },
+            { "value":3, "id": "IN-CT", "name": "Chhattisgarh", "population": "25,545,198", "area": "135,194 km²" },
+            { "value":2, "id": "IN-DD", "name": "Dadra and Nagar Haveli and Daman and Diu", "population": "586,956", "area": "603 km²" },
+            { "value":5, "id": "IN-DL", "name": "Delhi", "population": "18,980,000", "area": "1,484 km²" },
+            { "value":1, "id": "IN-GA", "name": "Goa", "population": "1,457,723", "area": "3,702 km²" },
+            { "value":3, "id": "IN-GJ", "name": "Gujarat", "population": "60,439,692", "area": "196,024 km²" },
+            { "value":5, "id": "IN-HR", "name": "Haryana", "population": "25,353,081", "area": "44,212 km²" },
+            { "value":1, "id": "IN-HP", "name": "Himachal Pradesh", "population": "6,864,602", "area": "55,673 km²" },
+            { "value":4, "id": "IN-JK", "name": "Jammu and Kashmir", "population": "12,548,926", "area": "222,236 km²" },
+            { "value":2, "id": "IN-JH", "name": "Jharkhand", "population": "32,966,238", "area": "79,714 km²" },
+            { "value":1, "id": "IN-KA", "name": "Karnataka", "population": "61,130,704", "area": "191,791 km²" },
+            { "value":5, "id": "IN-KL", "name": "Kerala", "population": "33,406,061", "area": "38,863 km²" },
+            { "value":2, "id": "IN-LD", "name": "Lakshadweep", "population": "64,473", "area": "32 km²" },
+            { "value":4, "id": "IN-MP", "name": "Madhya Pradesh", "population": "72,626,809", "area": "308,252 km²" },
+            { "value":3, "id": "IN-MH", "name": "Maharashtra", "population": "112,372,972", "area": "307,713 km²" },
+            { "value":1, "id": "IN-MN", "name": "Manipur", "population": "2,570,390", "area": "22,327 km²" },
+            { "value":5, "id": "IN-ML", "name": "Meghalaya", "population": "2,966,889", "area": "22,720 km²" },
+            { "value":2, "id": "IN-MZ", "name": "Mizoram", "population": "1,097,206", "area": "21,081 km²" },
+            { "value":4, "id": "IN-NL", "name": "Nagaland", "population": "1,980,602", "area": "16,579 km²" },
+            { "value":2, "id": "IN-OR", "name": "Odisha", "population": "41,974,218", "area": "155,707 km²" },
+            { "value":5, "id": "IN-PY", "name": "Puducherry", "population": "1,244,464", "area": "479 km²" },
+            { "value":1, "id": "IN-PB", "name": "Punjab", "population": "27,743,338", "area": "50,362 km²" },
+            { "value":2, "id": "IN-RJ", "name": "Rajasthan", "population": "68,548,437", "area": "342,239 km²" },
+            { "value":5, "id": "IN-SK", "name": "Sikkim", "population": "671,720", "area": "7,096 km²" },
+            { "value":4, "id": "IN-TN", "name": "Tamil Nadu", "population": "72,147,030", "area": "130,058 km²" },
+            { "value":2, "id": "IN-TG", "name": "Telangana", "population": "35,193,978", "area": "114,840 km²" },
+            { "value":3, "id": "IN-TR", "name": "Tripura", "population": "3,673,917", "area": "10,486 km²" },
+            { "value":1, "id": "IN-UP", "name": "Uttar Pradesh", "population": "199,812,341", "area": "243,290 km²" },
+            { "value":4, "id": "IN-UT", "name": "Uttarakhand", "population": "10,086,292", "area": "53,483 km²" },
+            { "value":1, "id": "IN-WB", "name": "West Bengal", "population": "91,347,736", "area": "88,752 km²" }
+        ];
+		
+		var previousPolygon;
+
+		polygonSeries.mapPolygons.template.on("active", function (active, target) {
+		  if (previousPolygon && previousPolygon != target) {
+			previousPolygon.set("active", false);
+		  }
+		  previousPolygon = target;
+		  
+		  if (target.get("active")) {
+			console.log(target.dataItem.dataContext.value);
+			console.log(target.dataItem.dataContext.id);
+			console.log(target.dataItem.dataContext.name); /// any action
+		  }
+		});
+		
+        // Set states data
+        polygonSeries.data.setAll(states);
+
+        chart.appear(1000, 100);
+
+    </script>
+</body>
+</html>

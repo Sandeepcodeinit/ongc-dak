@@ -1,0 +1,7 @@
+0 * * * 0 cd /opt/bitnami/apache/htdocs && /opt/bitnami/php/bin/php artisan app:sendtestemail >> /dev/null 2>&1
+
+0 1 * * * cd /opt/bitnami/apache/htdocs && /opt/bitnami/php/bin/php artisan backup:clean >> /dev/null 2>&1
+
+0 2 * * * cd /opt/bitnami/apache/htdocs && /opt/bitnami/php/bin/php artisan backup:run >> /dev/null 2>&1
+
+0 3 * * 0 cd /opt/bitnami/apache/htdocs && /opt/bitnami/php/bin/php artisan app:host_storage >> /dev/null 2>&1
